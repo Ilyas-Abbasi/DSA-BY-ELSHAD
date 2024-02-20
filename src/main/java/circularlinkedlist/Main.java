@@ -11,5 +11,11 @@ public class Main {
 
     cll.traverse();
     cll.search(4);
+    /*cll.delete(0);
+    cll.delete(1);
+    cll.delete(4);
+    cll.delete(0);*/
+    cll.deleteEntireList();
+    cll.traverse();
   }
 }

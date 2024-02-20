@@ -66,8 +66,8 @@ public class CircularLinkedList {
     if (head != null) {
       Node temp = head;
       for (int i = 0; i < size; i++) {
-        if (temp.value == value){
-          System.out.println("Element found at the location index " +i);
+        if (temp.value == value) {
+          System.out.println("Element found at the location index " + i);
           return true;
         }
         temp = temp.next;
@@ -76,5 +76,44 @@ public class CircularLinkedList {
 
     System.out.println("Element not found in the csll.");
     return false;
+  }
+
+  public void delete(int location) {
+    if (head == null) {
+      System.out.println("CSLL does not exist.");
+      return;
+    } else if (size == 1) {
+      head.next = null;
+      tail = head = null;
+    } else if (location == 0) {
+      head = head.next;
+      tail.next = head;
+    } else if (location >= size) {
+      Node temp = head;
+      for (int i = 0; i < size - 1; i++) {
+        temp = temp.next;
+      }
+      temp.next = head;
+      tail = temp;
+    } else {
+      Node temp = head;
+
+      for (int i = 0; i < location - 1; i++) {
+        temp = temp.next;
+      }
+      temp.next = temp.next.next;
+    }
+    size--;
+  }
+
+  public void deleteEntireList() {
+    if (head == null) {
+      System.out.println("CSLL does not exist");
+    } else {
+      tail.next = null;
+      head = tail = null;
+      size = 0;
+      System.out.println("Deleted all the element of CSLL");
+    }
   }
 }
